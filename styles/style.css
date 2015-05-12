@@ -10,6 +10,11 @@ ul {
   text-align: center;
 }
 
+div {
+  margin: 40px auto;
+  text-align: center;
+}
+
 .cross {
   background-color: red;
 }
