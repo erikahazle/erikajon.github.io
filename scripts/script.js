@@ -37,7 +37,7 @@ function getUser1Move() {
 }
 
 
-function checkWinner(lastMove) {
+function checkWinner() {
   var winner = "";
   if (table[0] === table[1] && table[1] === table[2]) {
     winner = table[0];
@@ -49,7 +49,15 @@ function checkWinner(lastMove) {
     winner = table[0];
   } else if (table[2] === table[4] && table[4] === table[6]) {
     winner = table[2];
+  } else if (table[0] === table[3] && table[3] === table[6]) {
+    winner = table[0];
+  } else if (table[1] === table[4] && table[4] === table[7]) {
+    winner = table[1];
+  } else if (table[2] === table[5] && table[5] === table[8]) {
+    winner = table[2];
   }
+
+  winner {}
 
   if (winner === 'x' || winner === 'o') {
     $('#move').text('');
