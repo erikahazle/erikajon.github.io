@@ -1,74 +1,68 @@
-console.log('Javascipt is working');
-
 var lastMove = '';
-var table = [];
-var indexPosition;
+var board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+var winningCombos;
 
-function getMove() {
-  if (lastMove === 'x') {
-    $('#move').text("User2, it's your move!");
-    getUser2Move();
-  } else {
-    $('#move').text("User1, it's your move!");
-    getUser1Move();
-  }
+function resetBoard(){
+  $('li').removeClass('cross');
+  $('li').removeClass('nought');
+  board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+  lastMove = '';
+  $('#move').text('User1, please make your move');
 }
 
-function getUser2Move() {
-  $('li').on('click', function() {
-    $(this).removeClass('cross');
-    $(this).addClass('nought');
-    lastMove = 'o';
-    indexPosition = Number($(this).attr('value')) - 1;
-    table[indexPosition] = 'o';
-    checkWinner();
-  });
+function addMoveToBoard(lastMove, indexOfBoard) {
+    board[indexOfBoard] = lastMove;
 }
-
-function getUser1Move() {
-  $('li').on('click', function() {
-    $(this).removeClass('nought');
-    $(this).addClass('cross');
-    lastMove = 'x';
-    indexPosition = Number($(this).attr('value')) - 1;
-    table[indexPosition] = 'x';
-    checkWinner();
-  })
-}
-
 
 function checkWinner() {
-  var winner = "";
-  if (table[0] === table[1] && table[1] === table[2]) {
-    winner = table[0];
-  } else if (table[3] === table[4] && table[4] === table[5]) {
-    winner = table[3];
-  } else if (table[6] === table[7] && table[7] === table[8]) {
-    winner = table[6];
-  } else if (table[0] === table[4] && table[4] === table[8]) {
-    winner = table[0];
-  } else if (table[2] === table[4] && table[4] === table[6]) {
-    winner = table[2];
-  } else if (table[0] === table[3] && table[3] === table[6]) {
-    winner = table[0];
-  } else if (table[1] === table[4] && table[4] === table[7]) {
-    winner = table[1];
-  } else if (table[2] === table[5] && table[5] === table[8]) {
-    winner = table[2];
+  if (board[0] === board[1] && board[1] === board[2]) {
+    winner = board[0];
+  } else if (board[3] === board[4] && board[4] === board[5]) {
+    winner = board[3];
+  } else if (board[6] === board[7] && board[7] === board[8]) {
+    winner = board[6];
+  } else if (board[0] === board[4] && board[4] === board[8]) {
+    winner = board[0];
+  } else if (board[2] === board[4] && board[4] === board[6]) {
+    winner = board[2];
+  } else if (board[0] === board[3] && board[3] === board[6]) {
+    winner = board[0];
+  } else if (board[1] === board[4] && board[4] === board[7]) {
+    winner = board[1];
+  } else if (board[2] === board[5] && board[5] === board[8]) {
+    winner = board[2];
   }
-
-  winner {}
-
-  if (winner === 'x' || winner === 'o') {
-    $('#move').text('');
-    $('#result').text('');
-    $('#result').text("Winner is " + winner);
+  if(winner === 'o' || winner === 'x') {
+    alert('Winner is ' + winner);
+    resetBoard();
   } else {
-    getMove();
-  } 
-
+    if(lastMove === 'x') {
+      $('#move').text('User2, please make your move');
+    } else {
+      $('#move').text('User1, please make your move');
+    }
+  }
 }
 
 $(document).ready(function() {
-  getMove();
+  $('#move').text('User1, please make your move');
+
+  $('li').on('click', function() {
+    if(lastMove === 'x') {
+      $(this).addClass('nought'); 
+      lastMove = 'o';
+      var indexOfBoard = Number($(this).attr('value'));
+      addMoveToBoard(lastMove, indexOfBoard);
+      checkWinner();
+    } else {
+      $(this).addClass('cross');
+      lastMove = 'x';
+      var indexOfBoard = Number($(this).attr('value'));
+      addMoveToBoard(lastMove, indexOfBoard);
+      checkWinner();
+    }
+  })
+
+  $('#reset').on('click', resetBoard);
+
 })

@@ -1,3 +1,10 @@
+#reset {
+  border: 2px solid black;
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+}
+
 li {
   width: 150px;
   height: 150px;
