@@ -46,22 +46,23 @@ function checkWinner() {
 
 $(document).ready(function() {
   $('#move').text('User1, please make your move');
-
-  $('li').on('click', function() {
-    if(lastMove === 'x') {
-      $(this).addClass('nought'); 
-      lastMove = 'o';
-      var indexOfBoard = Number($(this).attr('value'));
-      addMoveToBoard(lastMove, indexOfBoard);
-      checkWinner();
-    } else {
-      $(this).addClass('cross');
-      lastMove = 'x';
-      var indexOfBoard = Number($(this).attr('value'));
-      addMoveToBoard(lastMove, indexOfBoard);
-      checkWinner();
-    }
+  $('li').on('click', function(event) {
+      if(lastMove === 'x') {
+        event.stopPropagation();
+        $(this).addClass('nought'); 
+        lastMove = 'o';
+        var indexOfBoard = Number($(this).attr('value'));
+        addMoveToBoard(lastMove, indexOfBoard);
+        checkWinner();
+      } else {
+        $(this).addClass('cross');
+        lastMove = 'x';
+        var indexOfBoard = Number($(this).attr('value'));
+        addMoveToBoard(lastMove, indexOfBoard);
+        checkWinner();
+      } 
   })
+
 
   $('#reset').on('click', resetBoard);
 
