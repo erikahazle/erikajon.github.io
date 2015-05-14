@@ -2,20 +2,22 @@
 LANDING PAGE
 **********************/
 var user1Token;
+var user1Display;
+var user2Display;
 
 function userChooseToken() {
   user1Token = $('select').val();
   localStorage.setItem('user1Token', user1Token);
   $('.chooseToken').css('display', 'none');
   $('.play').removeClass('hide');
+
   if (user1Token === 'Crosses') {
-    $('#user1Token').attr('src', 'images/cross.png');
-    $('#user2Token').attr('src', 'images/nought.png');
+    $('#user1Token').attr('src', 'images/strawberry.png');
+    $('#user2Token').attr('src', 'images/watermelon.png');
   } else {
-    $('#user1Token').attr('src', 'images/nought.png');
-    $('#user2Token').attr('src', 'images/cross.png');
+    $('#user1Token').attr('src', 'images/watermelon.png');
+    $('#user2Token').attr('src', 'images/strawberry.png');
   }
-  
 }
 
 /**********************
@@ -30,7 +32,8 @@ function resetBoard(){
   $('li').removeClass('cross nought');
   board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   lastMove = '';
-  $('#move').text('User1, please make your move');
+  play();
+  $('#move').text('User 1, please make your move');
   $('li').one('click', function(event) {
       if(lastMove === 'x') {
         $(this).addClass('nought'); 
@@ -75,9 +78,9 @@ function checkWinner() {
     resetBoard();
   } else {
     if(lastMove === 'x') {
-      $('#move').text('User2, please make your move');
+      $('#move').text('User 2, please make your move');
     } else {
-      $('#move').text('User1, please make your move');
+      $('#move').text('User 1, please make your move');
     }
   }
 }
@@ -86,14 +89,15 @@ function play() {
   user1Token = localStorage.getItem('user1Token');
   if (user1Token === 'Crosses') {
     lastMove = 'o';
-    $('#move').text('User1, please make your move');
+    $('#move').text('User 1, please make your move');
   } else {
     lastMove = 'x';
-    $('#move').text('User2, please make your move');
+    $('#move').text('User 2, please make your move');
   }
 }
 
 $(document).ready(function() {
+
   play();
 
   $('li').one('click', function(event) {
