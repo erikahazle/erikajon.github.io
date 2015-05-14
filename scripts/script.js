@@ -2,11 +2,9 @@
 LANDING PAGE
 **********************/
 var user1Token;
-var user1Display;
-var user2Display;
 
 function userChooseToken() {
-  user1Token = $('select').val();
+  user1Token = $('input[name=token]:checked').val();
   localStorage.setItem('user1Token', user1Token);
   $('.chooseToken').css('display', 'none');
   $('.play').removeClass('hide');
@@ -29,11 +27,10 @@ var board = [undefined, undefined, undefined, undefined, undefined, undefined, u
 var winningCombos;
 
 function resetBoard(){
-  $('li').removeClass('cross nought');
-  board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   lastMove = '';
   play();
-  $('#move').text('User 1, please make your move');
+  $('li').removeClass('cross nought');
+  board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   $('li').one('click', function(event) {
       if(lastMove === 'x') {
         $(this).addClass('nought'); 
@@ -73,11 +70,19 @@ function checkWinner() {
   } else if (board[2] === board[5] && board[5] === board[8]) {
     winner = board[2];
   }
-  if(winner === 'o' || winner === 'x') {
-    alert('Winner is ' + winner);
+  if(winner === 'x' && user1Token === '') {
+
     resetBoard();
-  } else {
-    if(lastMove === 'x') {
+  } else if (winner === 'o') {
+
+  }
+
+  else {
+    if(lastMove === 'o' && user1Token === 'Crosses') {
+      $('#move').text('User 2, please make your move');
+    } else if (lastMove === 'x' && user1Token === 'Noughts'){
+      $('#move').text('User 1, please make your move');
+    } else if (lastMove === 'o' && user1Token === 'Noughts') {
       $('#move').text('User 2, please make your move');
     } else {
       $('#move').text('User 1, please make your move');
@@ -88,16 +93,13 @@ function checkWinner() {
 function play() {
   user1Token = localStorage.getItem('user1Token');
   if (user1Token === 'Crosses') {
-    lastMove = 'o';
     $('#move').text('User 1, please make your move');
   } else {
-    lastMove = 'x';
     $('#move').text('User 2, please make your move');
   }
 }
 
 $(document).ready(function() {
-
   play();
 
   $('li').one('click', function(event) {
@@ -118,6 +120,6 @@ $(document).ready(function() {
 
   $('#reset').on('click', resetBoard);
 
-  $('input').on('click', userChooseToken);
+  $('#submit').on('click', userChooseToken);
 
 })

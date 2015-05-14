@@ -8,30 +8,38 @@
   <script type="text/javascript" src="scripts/script.js"></script>
 </head>
 <body>
-  <div>
-    <img class="logo" src="http://thetechnicgear.com/wp-content/uploads/2013/05/tic_tac_toe.png"></img>
+  <div class="wrapper">
+    <div>
+      <img class="logo" src="http://thetechnicgear.com/wp-content/uploads/2013/05/tic_tac_toe.png"></img>
+    </div>
+    <div>
+      <div class="chooseToken">
+        <p>User 1 please choose your token:</p>
+        <div class="token">
+          <input type="radio" id="cross" name="token" value="Crosses" />
+          <label for="cross"><img class="fruit" src="images/strawberry.png"></label>
+        </div>
+        <div class="token">
+          <input type="radio" id="nought" name="token" value="Noughts" />
+          <label for="cross"><img class="fruit" src="images/watermelon.png"</label>
+        </div>
+        <div>
+          <input type="submit" name="Submit" id="submit">
+        </div>
+      </div>
+      <div class="play hide">
+        <div id="user1Info">
+          <p>User 1:</p>
+         <img id="user1Token" src="">
+        </div>
+        <div id="user2Info">
+          <p>User 2</p>
+          <img id="user2Token" src="">
+        </div>
+        <div>
+          <button><a href="index.html">Let's play!</a></button>
+        </div>
+      </div>
   </div>
-  <div>
-    <div class="chooseToken">
-      <p>User1 please choose your token</p>
-      <select>
-        <option>Crosses</option>
-        <option>Noughts</option>
-      </select> 
-      <input type="submit" name="Submit">
-    </div>
-    <div class="play hide">
-      <div id="user1Info">
-        <p>User 1:</p>
-       <img id="user1Token" src="">
-      </div>
-      <div id="user2Info">
-        <p>User 2</p>
-        <img id="user2Token" src="">
-      </div>
-      <div>
-        <button><a href="index.html">Let's play!</a></button>
-      </div>
-    </div>
 </body>
 </html>

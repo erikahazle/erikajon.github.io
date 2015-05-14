@@ -8,11 +8,18 @@ LANDING PAGE
   margin-bottom: 50px;
 }
 
-.hide {
-  display: none;
+.fruit {
+  height: 100px;
+  width: 100px;
+  vertical-align: center;
 }
 
-.tokens {
+.token {
+  display: inline-block;
+}
+
+
+.hide {
   display: none;
 }
 
