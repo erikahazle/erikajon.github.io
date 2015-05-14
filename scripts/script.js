@@ -5,15 +5,18 @@ var user1Token;
 
 function userChooseToken() {
   user1Token = $('select').val();
+  localStorage.setItem('user1Token', user1Token);
   $('.chooseToken').css('display', 'none');
+  $('.play').removeClass('hide');
   if (user1Token === 'Crosses') {
-    lastMove = 'o';
-    $('#move').text('User1, please make your move');
+    $('#user1Token').attr('src', 'images/cross.png');
+    $('#user2Token').attr('src', 'images/nought.png');
   } else {
-    lastMove = 'x';
-    $('#move').text('User2, please make your move');
+    $('#user1Token').attr('src', 'images/nought.png');
+    $('#user2Token').attr('src', 'images/cross.png');
   }
-} 
+  
+}
 
 /**********************
 BOARD PAGE
@@ -79,8 +82,19 @@ function checkWinner() {
   }
 }
 
+function play() {
+  user1Token = localStorage.getItem('user1Token');
+  if (user1Token === 'Crosses') {
+    lastMove = 'o';
+    $('#move').text('User1, please make your move');
+  } else {
+    lastMove = 'x';
+    $('#move').text('User2, please make your move');
+  }
+}
+
 $(document).ready(function() {
-  // $('#move').text('User1, please make your move');
+  play();
 
   $('li').one('click', function(event) {
       if(lastMove === 'x') {

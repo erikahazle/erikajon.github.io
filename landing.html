@@ -12,21 +12,26 @@
     <img class="logo" src="http://thetechnicgear.com/wp-content/uploads/2013/05/tic_tac_toe.png"></img>
   </div>
   <div>
-    <p>User1</p>
-    <!-- <input type="text" value="Enter your username"> -->
-    <select id='user1display'>
-      <option selected>Crosses</option>
-      <option>Noughts</option>
-    </select>
-<!--     <p>User2</p>
-    <select id='user2display'>
-      <option>Crosses</option>
-      <option selected>Noughts</option>
-    </select> -->
-    <div>
-    <button class="play"><a href="#">Let's play!</a></button>
-  </div>
-  </div>
-
+    <div class="chooseToken">
+      <p>User1 please choose your token</p>
+      <select>
+        <option>Crosses</option>
+        <option>Noughts</option>
+      </select> 
+      <input type="submit" name="Submit">
+    </div>
+    <div class="play hide">
+      <div id="user1Info">
+        <p>User 1:</p>
+       <img id="user1Token" src="">
+      </div>
+      <div id="user2Info">
+        <p>User 2</p>
+        <img id="user2Token" src="">
+      </div>
+      <div>
+        <button><a href="index.html">Let's play!</a></button>
+      </div>
+    </div>
 </body>
 </html>

@@ -40,7 +40,21 @@ LANDING PAGE
   margin-bottom: 50px;
 }
 
-input {
-  /*display: block;
-  text-align: center;*/
+.hide {
+  display: none;
+}
+
+.tokens {
+  display: none;
+}
+
+#user1Token, #user2Token {
+  width: 100px;
+  height: 100px;
+}
+
+#user2Info, #user1Info {
+  display: inline-block;
+  margin-left: 20px;
+  margin-right: 20px;
 }
