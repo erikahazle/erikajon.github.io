@@ -70,15 +70,29 @@ function checkWinner() {
   } else if (board[2] === board[5] && board[5] === board[8]) {
     winner = board[2];
   }
-  if(winner === 'x' && user1Token === '') {
 
+  if(winner === 'x' || winner === 'o') {
+    displayWinner();
     resetBoard();
-  } else if (winner === 'o') {
-
+  } else {
+    displayNextMove();
   }
+}
 
-  else {
-    if(lastMove === 'o' && user1Token === 'Crosses') {
+function displayWinner() {
+  if(winner === 'o' && user1Token === 'Crosses') {
+      alert('Winner is User 2');
+    } else if (winner === 'x' && user1Token === 'Noughts'){
+      alert('Winner is User 2');
+    } else if (winner === 'o' && user1Token === 'Noughts') {
+      alert('Winner is User 1');
+    } else {
+      alert('Winner is User 1');
+  }
+}
+
+function displayNextMove() {
+  if(lastMove === 'o' && user1Token === 'Crosses') {
       $('#move').text('User 2, please make your move');
     } else if (lastMove === 'x' && user1Token === 'Noughts'){
       $('#move').text('User 1, please make your move');
@@ -86,7 +100,6 @@ function checkWinner() {
       $('#move').text('User 2, please make your move');
     } else {
       $('#move').text('User 1, please make your move');
-    }
   }
 }
 
@@ -102,7 +115,7 @@ function play() {
 $(document).ready(function() {
   play();
 
-  $('li').one('click', function(event) {
+  $('li').one('click', function() {
       if(lastMove === 'x') {
         $(this).addClass('nought'); 
         lastMove = 'o';

@@ -74,6 +74,38 @@ li {
   padding: 0;
   background-color: rgba(255, 202, 203, 1);
   border-radius: 20px;
+  position: relative;
+}
+
+li:hover {
+  -webkit-transform: scale(0.9);
+  transform: scale(0.9);
+  -webkit-animation-duration: 2000ms;
+          animation-duration: 2000ms;
+  -webkit-animation-name: enlarge;
+          animation-name: enlarge;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes enlarge {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes enlarge {
+  from {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .cross {
