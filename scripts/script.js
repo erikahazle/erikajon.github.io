@@ -2,7 +2,19 @@
 LANDING PAGE
 **********************/
 var user1Token;
- 
+
+function userChooseToken() {
+  user1Token = $('select').val();
+  $('.chooseToken').css('display', 'none');
+  if (user1Token === 'Crosses') {
+    lastMove = 'o';
+    $('#move').text('User1, please make your move');
+  } else {
+    lastMove = 'x';
+    $('#move').text('User2, please make your move');
+  }
+} 
+
 /**********************
 BOARD PAGE
 **********************/
@@ -12,8 +24,7 @@ var board = [undefined, undefined, undefined, undefined, undefined, undefined, u
 var winningCombos;
 
 function resetBoard(){
-  $('li').removeClass('cross');
-  $('li').removeClass('nought');
+  $('li').removeClass('cross nought');
   board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
   lastMove = '';
   $('#move').text('User1, please make your move');
@@ -87,7 +98,8 @@ $(document).ready(function() {
       } 
   })
 
-
   $('#reset').on('click', resetBoard);
+
+  $('input').on('click', userChooseToken);
 
 })

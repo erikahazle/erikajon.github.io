@@ -41,5 +41,6 @@ LANDING PAGE
 }
 
 input {
-  display: inline-block;
+  /*display: block;
+  text-align: center;*/
 }
