@@ -85,10 +85,7 @@ GAME PAGE
 }
 
 #reset {
-  border: 2px solid black;
-  width: 100px;
-  display: inline-block;
-  text-align: center;
+  background-color: rgba(255, 202, 203, 1);
 }
 
 ul {

@@ -81,13 +81,13 @@ function displayWinner() {
 
 function displayNextMove() {
   if(lastMove === 'o' && user1Token === 'Crosses') {
-      $('#move').text('User 2, please make your move');
+      $('#move').text('User 1, please make your move');
     } else if (lastMove === 'x' && user1Token === 'Noughts'){
       $('#move').text('User 1, please make your move');
     } else if (lastMove === 'o' && user1Token === 'Noughts') {
       $('#move').text('User 2, please make your move');
-    } else {
-      $('#move').text('User 1, please make your move');
+    } else if (lastMove === 'x' && user1Token === 'Crosses'){
+      $('#move').text('User 2, please make your move');
   }
 }
 
