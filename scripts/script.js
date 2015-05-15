@@ -31,21 +31,7 @@ function resetBoard(){
   play();
   $('li').removeClass('cross nought');
   board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
-  $('li').one('click', function(event) {
-      if(lastMove === 'x') {
-        $(this).addClass('nought'); 
-        lastMove = 'o';
-        var indexOfBoard = Number($(this).attr('value'));
-        addMoveToBoard(lastMove, indexOfBoard);
-        checkWinner();
-      } else {
-        $(this).addClass('cross');
-        lastMove = 'x';
-        var indexOfBoard = Number($(this).attr('value'));
-        addMoveToBoard(lastMove, indexOfBoard);
-        checkWinner();
-      } 
-  })
+  $('li').one('click', getMove);
 }
 
 function addMoveToBoard(lastMove, indexOfBoard) {
@@ -69,6 +55,8 @@ function checkWinner() {
     winner = board[1];
   } else if (board[2] === board[5] && board[5] === board[8]) {
     winner = board[2];
+  } else if (board[1] === board[4] && board[4] === board[7]) {
+    winner = board[1];
   }
 
   if(winner === 'x' || winner === 'o') {
@@ -112,24 +100,26 @@ function play() {
   }
 }
 
+function getMove() {
+  if(lastMove === 'x') {
+    $(this).addClass('nought'); 
+    lastMove = 'o';
+    var indexOfBoard = Number($(this).attr('value'));
+    addMoveToBoard(lastMove, indexOfBoard);
+    checkWinner();
+  } else {
+    $(this).addClass('cross');
+    lastMove = 'x';
+    var indexOfBoard = Number($(this).attr('value'));
+    addMoveToBoard(lastMove, indexOfBoard);
+    checkWinner();
+  } 
+}
+
 $(document).ready(function() {
   play();
 
-  $('li').one('click', function() {
-      if(lastMove === 'x') {
-        $(this).addClass('nought'); 
-        lastMove = 'o';
-        var indexOfBoard = Number($(this).attr('value'));
-        addMoveToBoard(lastMove, indexOfBoard);
-        checkWinner();
-      } else {
-        $(this).addClass('cross');
-        lastMove = 'x';
-        var indexOfBoard = Number($(this).attr('value'));
-        addMoveToBoard(lastMove, indexOfBoard);
-        checkWinner();
-      } 
-  })
+  $('li').one('click', getMove);
 
   $('#reset').on('click', resetBoard);
 

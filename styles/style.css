@@ -1,11 +1,51 @@
+body {
+  background-color: rgba(105, 137, 237, 1);
+}
+
 /********************
 LANDING PAGE
 *********************/
 
-.logo {
-  width: 200px;
-  height: 200px;
-  margin-bottom: 50px;
+h1 {
+  font-family: 'Lobster', cursive;
+  margin-bottom: 75px;
+  margin-top: 0px;
+  color: rgba(232, 232, 126, 1);
+  font-size: 113px;
+}
+
+h2 {
+  font-family: 'Arvo', serif;
+  color: rgba(232, 232, 126, 1);
+  font-size: 28px;
+}
+
+p {
+  font-family: 'Arvo', serif;
+  color: white;
+}
+
+button {
+  background-color: rgba(232, 232, 126, 1);
+  border: 2px solid rgba(82, 191, 89, 1);
+  width: 135px;
+  height: 40px;
+  border-radius: 20px;
+  color: #279D2D;
+}
+
+#letsPlay {
+  text-decoration: none;
+  color: #279D2D;
+}
+
+#submit {
+  background-color: rgba(232, 232, 126, 1);
+  border: 2px solid rgba(82, 191, 89, 1);
+  width: 135px;
+  height: 40px;
+  border-radius: 20px;
+  color: #279D2D;
 }
 
 .fruit {
