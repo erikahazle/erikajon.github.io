@@ -30,7 +30,7 @@ function resetBoard(){
   lastMove = '';
   play();
   $('li').removeClass('cross nought');
-  board = [undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined, undefined];
+  board = [];
   $('li').one('click', getMove);
 }
 
@@ -55,8 +55,6 @@ function checkWinner() {
     winner = board[1];
   } else if (board[2] === board[5] && board[5] === board[8]) {
     winner = board[2];
-  } else if (board[1] === board[4] && board[4] === board[7]) {
-    winner = board[1];
   }
 
   if(winner === 'x' || winner === 'o') {
